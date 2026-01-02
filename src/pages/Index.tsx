@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { ArrowRight, Globe, TrendingUp, Shield, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
@@ -43,33 +45,89 @@ const reasons = [
   "Trusted partner to governments and institutions",
 ];
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-100px" },
+  transition: { duration: 0.7 },
+};
+
+const staggerContainer = {
+  initial: {},
+  whileInView: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+  viewport: { once: true },
+};
+
 const Index = () => {
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+      {/* Hero Section with Parallax */}
+      <section 
+        ref={heroRef}
+        className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
+      >
+        {/* Background Image with Parallax */}
+        <motion.div 
+          className="absolute inset-0 z-0"
+          style={{ y: heroImageY, scale: heroScale }}
+        >
           <img
             src={heroImage}
             alt="Global finance network"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/70 to-primary/90" />
-        </div>
+        </motion.div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-accent font-medium text-sm uppercase tracking-wider mb-4 animate-fade-in-up">
+        <motion.div 
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          style={{ opacity: heroOpacity }}
+        >
+          <motion.p 
+            className="text-accent font-medium text-sm uppercase tracking-wider mb-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             A Member of the World Bank Group
-          </p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 animate-fade-in-up animation-delay-100 text-balance max-w-4xl mx-auto">
+          </motion.p>
+          <motion.h1 
+            className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 text-balance max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             International Finance Corporation
-          </h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 animate-fade-in-up animation-delay-200">
+          </motion.h1>
+          <motion.p 
+            className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Driving Private Sector Growth in Emerging and Developing Markets
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-300">
+          </motion.p>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <Button variant="hero" size="xl" asChild>
               <Link to="/services">
                 Explore Our Services
@@ -79,37 +137,58 @@ const Index = () => {
             <Button variant="heroOutline" size="xl" asChild>
               <Link to="/about">Learn About IFC</Link>
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <motion.div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
           <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
-            <div className="w-1.5 h-3 bg-white/60 rounded-full" />
+            <motion.div 
+              className="w-1.5 h-3 bg-white/60 rounded-full"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Stats Section */}
       <section className="py-16 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div 
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+          >
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
+              <motion.div 
+                key={index} 
+                className="text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-serif">
                   {stat.value}
                 </p>
                 <p className="text-muted-foreground mt-2">{stat.label}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* About Preview Section */}
       <section className="container-section">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
+          <motion.div {...fadeInUp}>
             <p className="text-accent font-medium text-sm uppercase tracking-wider mb-4">
               Who We Are
             </p>
@@ -133,21 +212,30 @@ const Index = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-          </div>
-          <div className="relative">
+          </motion.div>
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             <div className="absolute -inset-4 bg-accent/10 rounded-2xl transform rotate-3" />
             <img
               src={aboutImage}
               alt="Global development and finance"
               className="relative rounded-xl shadow-lg w-full h-auto object-cover"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Services Section */}
       <section className="container-section bg-secondary">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          {...fadeInUp}
+        >
           <p className="text-accent font-medium text-sm uppercase tracking-wider mb-4">
             What We Do
           </p>
@@ -158,13 +246,24 @@ const Index = () => {
             IFC delivers impact through an integrated approach that combines financial 
             investment, advisory support, and capital mobilization.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+        >
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-background p-8 rounded-xl shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="bg-background p-8 rounded-xl shadow-card hover:shadow-lg transition-all duration-300"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
               <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
                 <service.icon className="w-7 h-7 text-primary" />
@@ -175,23 +274,29 @@ const Index = () => {
               <p className="text-muted-foreground leading-relaxed">
                 {service.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="text-center mt-12">
+        <motion.div 
+          className="text-center mt-12"
+          {...fadeInUp}
+        >
           <Button variant="gold" size="lg" asChild>
             <Link to="/services">
               View All Services
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-        </div>
+        </motion.div>
       </section>
 
       {/* Why Partner Section */}
       <section className="container-section">
-        <div className="max-w-4xl mx-auto text-center">
+        <motion.div 
+          className="max-w-4xl mx-auto text-center"
+          {...fadeInUp}
+        >
           <p className="text-accent font-medium text-sm uppercase tracking-wider mb-4">
             Why Partner With Us
           </p>
@@ -199,49 +304,85 @@ const Index = () => {
             Trusted Global Partnership
           </h2>
 
-          <div className="grid sm:grid-cols-2 gap-4 text-left mb-12">
+          <motion.div 
+            className="grid sm:grid-cols-2 gap-4 text-left mb-12"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+          >
             {reasons.map((reason, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="flex items-center gap-4 p-4 rounded-lg bg-secondary"
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
                   <span className="text-accent font-semibold text-sm">{index + 1}</span>
                 </div>
                 <p className="text-foreground font-medium">{reason}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <Button variant="hero" size="xl" asChild>
-            <Link to="/contact">
-              Start Your Partnership
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-        </div>
+          <motion.div {...fadeInUp}>
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/contact">
+                Start Your Partnership
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-primary py-20">
+      <motion.section 
+        className="bg-primary py-20"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-6">
+          <motion.h2 
+            className="font-serif text-3xl md:text-4xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             Ready to Explore Opportunities?
-          </h2>
-          <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="text-white/70 text-lg mb-10 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             IFC works with partners across the globe to unlock private sector solutions 
             that drive sustainable development and economic resilience.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          </motion.p>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <Button variant="hero" size="lg" asChild>
               <Link to="/eligibility">Check Eligibility</Link>
             </Button>
             <Button variant="heroOutline" size="lg" asChild>
               <Link to="/contact">Contact Us</Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </Layout>
   );
 };
