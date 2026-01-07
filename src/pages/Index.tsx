@@ -4,8 +4,9 @@ import { useRef } from "react";
 import { ArrowRight, Globe, TrendingUp, Shield, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
-import heroImage from "@/assets/hero-global.jpg";
-import aboutImage from "@/assets/about-development.jpg";
+import heroImage from "@/assets/hero-ifc-banner.png";
+import aboutImage from "@/assets/ifc-team-event.jpg";
+import financeImage from "@/assets/ifc-finance-infographic.png";
 
 const stats = [
   { value: "180+", label: "Member Countries" },
@@ -226,6 +227,52 @@ const Index = () => {
               alt="Global development and finance"
               className="relative rounded-xl shadow-lg w-full h-auto object-cover"
             />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Finance Impact Section with Infographic */}
+      <section className="container-section bg-primary">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <img
+              src={financeImage}
+              alt="IFC Short-Term Finance - $12 billion impact"
+              className="rounded-xl shadow-2xl w-full h-auto object-cover"
+            />
+          </motion.div>
+          <motion.div {...fadeInUp} className="text-white">
+            <p className="text-accent font-medium text-sm uppercase tracking-wider mb-4">
+              Our Impact
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
+              Short-Term Finance Solutions
+            </h2>
+            <p className="text-white/80 text-lg leading-relaxed mb-6">
+              IFC's trade and short-term finance programs provide critical support to 
+              businesses in emerging markets, enabling cross-border trade and economic growth.
+            </p>
+            <div className="grid grid-cols-2 gap-6 mb-8">
+              <div className="bg-white/10 p-4 rounded-lg">
+                <p className="text-3xl font-bold text-accent">$12B</p>
+                <p className="text-white/70 text-sm mt-1">Total Short-Term Finance</p>
+              </div>
+              <div className="bg-white/10 p-4 rounded-lg">
+                <p className="text-3xl font-bold text-accent">$11B</p>
+                <p className="text-white/70 text-sm mt-1">Own Account</p>
+              </div>
+            </div>
+            <Button variant="hero" asChild>
+              <Link to="/services">
+                Explore Finance Solutions
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </section>
