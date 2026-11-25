@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Target, Globe, Users, Award, Building, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Layout from "@/components/layout/Layout";
 import aboutImage from "@/assets/about-development.jpg";
 
 const values = [
@@ -48,7 +47,7 @@ const milestones = [
 
 const About = () => {
   return (
-    <Layout>
+    <>
       {/* Hero Section */}
       <section className="bg-primary py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -201,7 +200,7 @@ const About = () => {
           </Button>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

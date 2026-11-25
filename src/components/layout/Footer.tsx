@@ -12,15 +12,15 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
-                <span className="text-primary-foreground font-serif font-bold text-xl">IFC</span>
+                <span className="text-primary-foreground font-serif font-bold text-xl">AG</span>
               </div>
               <div>
-                <p className="text-sm font-semibold leading-tight">International Finance</p>
-                <p className="text-sm font-semibold leading-tight">Corporation</p>
+                <p className="text-sm font-semibold leading-tight">Apex Grants</p>
+                <p className="text-sm font-semibold leading-tight">& Innovation</p>
               </div>
             </div>
             <p className="text-sm text-primary-foreground/70 leading-relaxed">
-              A Member of the World Bank Group. Driving private sector growth in emerging and developing markets.
+              Deploying non-dilutive capital for secure technology and resilient local enterprises worldwide.
             </p>
           </div>
 
@@ -29,8 +29,8 @@ const Footer = () => {
             <h4 className="font-semibold mb-6 text-lg">Quick Links</h4>
             <ul className="space-y-3">
               {[
-                { label: "About IFC", path: "/about" },
-                { label: "What We Do", path: "/services" },
+                { label: "About Apex", path: "/about" },
+                { label: "Grant Programs", path: "/programs" },
                 { label: "Eligibility", path: "/eligibility" },
                 { label: "Contact Us", path: "/contact" },
               ].map((link) => (
@@ -51,10 +51,10 @@ const Footer = () => {
             <h4 className="font-semibold mb-6 text-lg">Our Services</h4>
             <ul className="space-y-3">
               {[
-                "Investment Services",
-                "Advisory Services",
-                "Trade Finance",
-                "Blended Finance",
+                "Applied Tech & Security",
+                "SMB Digital Boost",
+                "Fellowships",
+                "Open Source",
               ].map((service) => (
                 <li key={service}>
                   <span className="text-sm text-primary-foreground/70">{service}</span>
@@ -67,9 +67,9 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-6 text-lg">Contact</h4>
             <address className="not-italic text-sm text-primary-foreground/70 space-y-3">
-              <p>2121 Pennsylvania Avenue, NW</p>
-              <p>Washington, DC 20433</p>
-              <p>United States</p>
+              <p>Global Grants Secretariat</p>
+              <p>programs@apexgrants.org</p>
+              <p>Washington / Nairobi / Singapore</p>
             </address>
           </div>
         </div>
@@ -77,7 +77,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="py-6 border-t border-primary-foreground/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/60">
-            <p>© {currentYear} International Finance Corporation. All rights reserved.</p>
+            <p>© {currentYear} Apex Grants & Innovation. All rights reserved.</p>
             <div className="flex gap-6">
               <Link to="/privacy" className="hover:text-primary-foreground transition-colors">
                 Privacy Policy

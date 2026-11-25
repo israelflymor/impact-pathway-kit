@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import Layout from "@/components/layout/Layout";
 
 const contactInfo = [
   {
@@ -66,7 +65,7 @@ const Contact = () => {
   };
 
   return (
-    <Layout>
+    <>
       {/* Hero Section */}
       <section className="bg-primary py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -223,7 +222,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

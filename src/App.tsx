@@ -10,6 +10,11 @@ import News from "./pages/News";
 import Eligibility from "./pages/Eligibility";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Programs from "./pages/Programs";
+import SecureTheInternet from "./pages/SecureTheInternet";
+import SmbBoost from "./pages/SmbBoost";
+import Impact from "./pages/Impact";
+import Layout from "./components/layout/Layout";
 
 const queryClient = new QueryClient();
 
@@ -20,14 +25,19 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/eligibility" element={<Eligibility />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/programs" element={<Programs />} />
+            <Route path="/programs/secure-the-internet" element={<SecureTheInternet />} />
+            <Route path="/programs/smb-boost" element={<SmbBoost />} />
+            <Route path="/impact" element={<Impact />} />
+            <Route path="/eligibility" element={<Eligibility />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Clock, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-global.jpg";
 
 const featuredArticle = {
@@ -95,7 +94,7 @@ const staggerContainer = {
 
 const News = () => {
   return (
-    <Layout>
+    <>
       {/* Hero Section with Parallax */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <motion.div 
@@ -315,7 +314,7 @@ const News = () => {
           </div>
         </motion.div>
       </section>
-    </Layout>
+    </>
   );
 };
 

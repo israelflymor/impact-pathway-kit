@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "Home", path: "/" },
+  { label: "Programs", path: "/programs" },
+  { label: "Secure the Internet", path: "/programs/secure-the-internet" },
+  { label: "SMB Boost", path: "/programs/smb-boost" },
+  { label: "Impact & Fellows", path: "/impact" },
   { label: "About", path: "/about" },
-  { label: "What We Do", path: "/services" },
-  { label: "News", path: "/news" },
   { label: "Eligibility", path: "/eligibility" },
   { label: "Contact", path: "/contact" },
 ];
@@ -23,21 +25,21 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-serif font-bold text-xl">IFC</span>
+              <span className="text-primary-foreground font-serif font-bold text-xl">AG</span>
             </div>
             <div className="hidden sm:block">
-              <p className="text-sm font-semibold text-foreground leading-tight">International Finance</p>
-              <p className="text-sm font-semibold text-foreground leading-tight">Corporation</p>
+              <p className="text-sm font-semibold text-foreground leading-tight">Apex Grants</p>
+              <p className="text-sm font-semibold text-foreground leading-tight">& Innovation</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-3 xl:gap-5">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-xs xl:text-sm font-medium transition-colors hover:text-primary ${
                   location.pathname === item.path
                     ? "text-primary"
                     : "text-muted-foreground"
@@ -51,7 +53,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden lg:block">
             <Button variant="gold" asChild>
-              <Link to="/contact">Get Started</Link>
+              <Link to="/eligibility">Check Eligibility</Link>
             </Button>
           </div>
 
@@ -85,8 +87,8 @@ const Header = () => {
               </Link>
             ))}
             <Button variant="gold" className="w-full mt-4" asChild>
-              <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                Get Started
+              <Link to="/eligibility" onClick={() => setIsMenuOpen(false)}>
+                Check Eligibility
               </Link>
             </Button>
           </nav>

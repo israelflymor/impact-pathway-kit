@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Briefcase, TrendingUp, FileText, Globe, Building, Leaf, Heart, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Layout from "@/components/layout/Layout";
 
 const investmentServices = [
   {
@@ -60,7 +59,7 @@ const sectors = [
 
 const Services = () => {
   return (
-    <Layout>
+    <>
       {/* Hero Section */}
       <section className="bg-primary py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -202,7 +201,7 @@ const Services = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 
