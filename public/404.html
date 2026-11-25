@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apex Grants &amp; Innovation</title>
+  </head>
+  <body>
+    <script>
+      const base = "/impact-pathway-kit";
+      const path = window.location.pathname.slice(base.length);
+      window.location.replace(base + "/?path=" + encodeURIComponent(path) + window.location.search + window.location.hash);
+    </script>
+  </body>
+</html>

@@ -18,12 +18,26 @@ import Layout from "./components/layout/Layout";
 
 const queryClient = new QueryClient();
 
+const restoreGitHubPagesRoute = () => {
+  const params = new URLSearchParams(window.location.search);
+  const route = params.get("path");
+  if (!route) return;
+
+  window.history.replaceState(
+    {},
+    "",
+    `/impact-pathway-kit${route}${window.location.hash}`,
+  );
+};
+
+restoreGitHubPagesRoute();
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Index />} />
