@@ -4,7 +4,7 @@ import { ArrowRight, ShieldCheck, Check, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ApplyGrantDialog } from "@/components/grants/ApplyGrantDialog";
 
 const priorities = [
   ["Abuse detection", "Tools that identify coordinated harm and unsafe platform activity."],
@@ -25,7 +25,7 @@ const SecureTheInternet = () => {
           <Badge className="mb-5 bg-accent text-accent-foreground">Accepting Proposals</Badge>
           <h1 className="max-w-4xl font-serif text-4xl font-bold text-white md:text-6xl">Applied Tech & Security Grants</h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">Up to $100,000 in unrestricted gifts, plus Summit and Black Hat-style presentation travel support.</p>
-          <div className="mt-8 flex flex-wrap gap-3"><Button variant="hero" asChild><Link to="/eligibility">Check eligibility <ArrowRight /></Link></Button><Dialog><DialogTrigger asChild><Button variant="heroOutline">Submit proposal</Button></DialogTrigger><DialogContent><DialogHeader><DialogTitle>Prepare your 2-page proposal</DialogTitle><DialogDescription>Confirm the required sections, then begin your submission with the grants team.</DialogDescription></DialogHeader><a className="inline-flex" href="mailto:proposals@apexgrants.org?subject=Secure%20the%20Internet%20Proposal"><Button variant="hero">Email proposal team <ArrowRight /></Button></a></DialogContent></Dialog></div>
+          <div className="mt-8 flex flex-wrap gap-3"><Button variant="hero" asChild><Link to="/eligibility">Check eligibility <ArrowRight /></Link></Button><ApplyGrantDialog grantName="Applied Tech & Security" variant="heroOutline" /></div>
         </div>
       </section>
       <section className="container-section">

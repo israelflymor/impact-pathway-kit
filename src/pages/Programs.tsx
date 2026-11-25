@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { ApplyGrantDialog } from "@/components/grants/ApplyGrantDialog";
 
 const programs = [
   { title: "Secure the Internet RFP", category: "Cybersecurity & Privacy", track: "Applied Tech & Security", status: "Accepting Proposals", funding: "$50k–$100k", deadline: "February 28, 2027", icon: ShieldCheck, path: "/programs/secure-the-internet" },
@@ -58,7 +59,10 @@ const Programs = () => {
                   <div><p className="text-xs text-muted-foreground">Funding tier</p><p className="mt-1 font-semibold">{program.funding}</p></div>
                   <div><p className="text-xs text-muted-foreground">Deadline</p><p className="mt-1 font-semibold">{program.deadline}</p></div>
                 </div>
-                <Button className="mt-6" variant="outline" asChild><Link to={program.path}>View program <ArrowRight /></Link></Button>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Button variant="outline" asChild><Link to={program.path}>View program <ArrowRight /></Link></Button>
+                  <ApplyGrantDialog grantName={program.title} variant="hero" />
+                </div>
               </CardContent>
             </Card>
           ))}

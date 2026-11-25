@@ -3,6 +3,7 @@ import { ArrowRight, BadgeDollarSign, Megaphone, UserCheck, Rocket } from "lucid
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { ApplyGrantDialog } from "@/components/grants/ApplyGrantDialog";
 
 const onboarding = [
   { icon: UserCheck, title: "Set up your ad account", copy: "Create a verified business account and confirm operating location, category, and ownership." },
@@ -17,7 +18,7 @@ const SmbBoost = () => (
         <Badge className="mb-5 bg-accent text-accent-foreground">Rolling admission</Badge>
         <h1 className="max-w-4xl font-serif text-4xl font-bold text-white md:text-6xl">SMB Digital Boost</h1>
         <p className="mt-6 max-w-2xl text-lg text-white/75">Direct cash relief paired with digital advertising credits and practical onboarding for resilient local customer pipelines.</p>
-        <Button className="mt-8" variant="hero" asChild><Link to="/eligibility">Check qualification <ArrowRight /></Link></Button>
+        <div className="mt-8 flex flex-wrap gap-3"><Button variant="hero" asChild><Link to="/eligibility">Check qualification <ArrowRight /></Link></Button><ApplyGrantDialog grantName="SMB Digital Boost" variant="heroOutline" /></div>
       </div>
     </section>
     <section className="container-section">

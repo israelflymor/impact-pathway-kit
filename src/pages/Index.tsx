@@ -5,6 +5,7 @@ import { ArrowRight, ShieldCheck, Store, Globe2, LockKeyhole, BadgeCheck, Networ
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ApplyGrantDialog } from "@/components/grants/ApplyGrantDialog";
 import heroImage from "@/assets/hero-ifc-banner.png";
 
 const stats = [
@@ -83,7 +84,10 @@ const Index = () => {
                 <h3 className="font-serif text-3xl font-semibold">Applied Tech & Security</h3>
                 <p className="mt-4 max-w-xl leading-relaxed text-white/75">$50k–$100k unrestricted gifts for researchers and open-source teams protecting people from abuse, fraud, and surveillance.</p>
                 <div className="mt-8 flex flex-wrap gap-2 text-xs text-white/70"><span>Abuse detection</span><span>•</span><span>Anti-phishing</span><span>•</span><span>Post-password auth</span></div>
-                <Button className="mt-9" variant="hero" asChild><Link to="/programs/secure-the-internet">Explore the RFP <ArrowRight /></Link></Button>
+                <div className="mt-9 flex flex-wrap gap-3">
+                  <Button variant="hero" asChild><Link to="/programs/secure-the-internet">Explore the RFP <ArrowRight /></Link></Button>
+                  <ApplyGrantDialog grantName="Applied Tech & Security" variant="heroOutline" />
+                </div>
               </CardContent>
             </Card>
           </motion.div>
@@ -95,7 +99,10 @@ const Index = () => {
                 <h3 className="font-serif text-3xl font-semibold text-primary">SMB Digital Boost</h3>
                 <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">$2k–$10k in direct cash relief paired with digital ad credits and guided account onboarding for local businesses.</p>
                 <div className="mt-8 flex flex-wrap gap-2 text-xs text-primary"><span>Cash relief</span><span>•</span><span>Ad credits</span><span>•</span><span>Customer growth</span></div>
-                <Button className="mt-9" variant="navy" asChild><Link to="/programs/smb-boost">View SMB Program <ArrowRight /></Link></Button>
+                <div className="mt-9 flex flex-wrap gap-3">
+                  <Button variant="navy" asChild><Link to="/programs/smb-boost">View SMB Program <ArrowRight /></Link></Button>
+                  <ApplyGrantDialog grantName="SMB Digital Boost" variant="outline" />
+                </div>
               </CardContent>
             </Card>
           </motion.div>
