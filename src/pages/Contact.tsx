@@ -77,7 +77,7 @@ const Contact = () => {
           </h1>
           <p className="text-white/70 text-lg max-w-3xl mx-auto">
             Reach out to discuss partnership opportunities, submit project inquiries, 
-            or learn more about IFC's services.
+            or learn more about Apex grant programs and partnership opportunities.
           </p>
         </div>
       </section>

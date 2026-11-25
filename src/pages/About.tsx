@@ -37,12 +37,12 @@ const values = [
 ];
 
 const milestones = [
-  { year: "1956", event: "IFC founded as part of the World Bank Group" },
-  { year: "1961", event: "First investment in Latin America" },
-  { year: "1989", event: "Launch of advisory services program" },
-  { year: "2000", event: "Expanded focus on sustainability and ESG" },
-  { year: "2010", event: "Record investment commitments reached" },
-  { year: "Present", event: "Operating in 100+ countries globally" },
+  { year: "2018", event: "Apex founded to fund applied public-interest technology" },
+  { year: "2021", event: "SMB recovery grants launched across 12 markets" },
+  { year: "2023", event: "Global privacy fellowships reached 20 universities" },
+  { year: "2025", event: "Open-source security portfolio surpassed 200 projects" },
+  { year: "2026", event: "First transnational grant summit convened" },
+  { year: "Present", event: "Operating across 38 countries worldwide" },
 ];
 
 const About = () => {
@@ -52,14 +52,13 @@ const About = () => {
       <section className="bg-primary py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-accent font-medium text-sm uppercase tracking-wider mb-4">
-            About IFC
+            About Apex
           </p>
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             Who We Are
           </h1>
           <p className="text-white/70 text-lg max-w-3xl mx-auto">
-            The largest global development institution focused exclusively on the 
-            private sector in emerging and developing economies.
+            A prestigious grantmaker advancing secure technology and resilient local enterprise.
           </p>
         </div>
       </section>
@@ -71,19 +70,16 @@ const About = () => {
             <h2 className="section-header">Our Story</h2>
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                The International Finance Corporation (IFC) is a member of the World Bank 
-                Group and the largest global development institution focused exclusively 
-                on the private sector in emerging and developing economies.
+                Apex Grants & Innovation deploys non-dilutive capital to practical, public-interest
+                technology and resilient small businesses.
               </p>
               <p>
-                Founded in 1956 and owned by over 180 member countries, IFC operates in 
-                more than 100 countries, combining global expertise with local insight to 
-                create markets and enable long-term development outcomes.
+                Our global portfolio combines disciplined research grants with direct business growth
+                support, delivered through transparent calls and independent peer review.
               </p>
               <p>
-                We partner with businesses, financial institutions, and governments to 
-                support sustainable economic growth, reduce poverty, and improve living 
-                standards around the world.
+                We partner with universities, non-profits, open-source teams, and local entrepreneurs
+                to turn applied ideas into measurable community outcomes.
               </p>
             </div>
           </div>
@@ -91,7 +87,7 @@ const About = () => {
             <div className="absolute -inset-4 bg-accent/10 rounded-2xl transform -rotate-3" />
             <img
               src={aboutImage}
-              alt="IFC Development Impact"
+              alt="Apex community grant impact"
               className="relative rounded-xl shadow-lg w-full h-auto object-cover"
             />
           </div>
@@ -108,10 +104,9 @@ const About = () => {
             Mission and Mandate
           </h2>
           <p className="text-xl text-muted-foreground leading-relaxed">
-            IFC's mandate is to promote private sector development in markets where 
-            access to capital and expertise remains limited. By mobilizing private 
-            investment and delivering targeted advisory services, IFC helps create jobs, 
-            strengthen institutions, and foster inclusive economic growth.
+            Apex exists to fund work that is rigorous, useful, and globally relevant. We pair
+            unrestricted grants with open research standards, while helping small businesses
+            build resilient digital customer pipelines.
           </p>
         </div>
       </section>
@@ -187,10 +182,10 @@ const About = () => {
       <section className="bg-primary py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-6">
-            Partner With IFC
+            Partner With Apex
           </h2>
           <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
-            Discover how IFC can support your business growth and development goals.
+            Work with a global grantmaker to advance secure technology or resilient enterprise.
           </p>
           <Button variant="hero" size="lg" asChild>
             <Link to="/contact">
