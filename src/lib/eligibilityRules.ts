@@ -100,3 +100,65 @@ export function evaluateEligibility(
       : "The provisional thresholds are not met.",
   };
 }
+
+export interface GrantApplicationInput {
+  fullName: string;
+  address: string;
+  gender: string;
+  state: string;
+  city: string;
+  maritalStatus: string;
+  cellNumber: string;
+  age: string;
+  occupation: string;
+  paymentPreference: string;
+  monthlyIncome: string;
+}
+
+export function validateApplication(application: GrantApplicationInput): string {
+  const requiredFields: Array<[keyof GrantApplicationInput, string]> = [
+    ["fullName", "Full name"],
+    ["address", "Address"],
+    ["gender", "Gender"],
+    ["state", "State"],
+    ["city", "City"],
+    ["maritalStatus", "Marital status"],
+    ["cellNumber", "Cell number"],
+    ["age", "Age"],
+    ["occupation", "Occupation"],
+    ["paymentPreference", "Cash or check preference"],
+    ["monthlyIncome", "Monthly income"],
+  ];
+
+  for (const [field, label] of requiredFields) {
+    if (!application[field].trim()) return `${label} is required.`;
+  }
+
+  const age = Number(application.age);
+  if (!Number.isFinite(age) || age < 18) return "Age must be 18 or older.";
+
+  const monthlyIncome = Number(application.monthlyIncome);
+  if (!Number.isFinite(monthlyIncome) || monthlyIncome < 0) {
+    return "Monthly income must be zero or greater.";
+  }
+
+  return "";
+}
+
+export function buildApplicationBrief(application: GrantApplicationInput): string {
+  return [
+    "APEX GRANTS — GRANT APPLICATION",
+    "",
+    `FULL NAME: ${application.fullName.trim()}`,
+    `ADDRESS: ${application.address.trim()}`,
+    `MALE/FEMALE: ${application.gender}`,
+    `STATE: ${application.state.trim()}`,
+    `CITY: ${application.city.trim()}`,
+    `MARRIED/SINGLE: ${application.maritalStatus}`,
+    `CELL NO: ${application.cellNumber.trim()}`,
+    `AGE: ${application.age}`,
+    `OCCUPATION: ${application.occupation.trim()}`,
+    `CASH OR CHECK: ${application.paymentPreference}`,
+    `MONTHLY INCOME: ${application.monthlyIncome}`,
+  ].join("\n");
+}
